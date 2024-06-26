@@ -1,0 +1,59 @@
+/* Add here all your CSS customizations */
+/* Logo */
+#header .logo {
+	-webkit-transition: none;
+	-moz-transition: none;
+	transition: none;
+}
+/* Barra navegación secundaria */
+#header .header-top nav {
+	float: right;
+}
+#header .nav-secundaria {
+	float: right;
+	margin: 10px 0 0 15px;
+	max-width:200px;
+	
+}
+
+/* Etiquetas portfolio */
+.thumb-info .thumb-info-type.thumb-info-type-secondary {
+	background-color: #ff7624;
+}
+.thumb-info .thumb-info-type.thumb-info-type-tertiary {
+	background-color: #114697;
+}
+.thumb-info .thumb-info-type.thumb-info-type-quaternary {
+	background-color: #c20658;
+}
+
+/* */
+.table > thead > tr > td.primary,
+.table > tbody > tr > td.primary,
+.table > tfoot > tr > td.primary,
+.table > thead > tr > th.primary,
+.table > tbody > tr > th.primary,
+.table > tfoot > tr > th.primary,
+.table > thead > tr.primary > td,
+.table > tbody > tr.primary > td,
+.table > tfoot > tr.primary > td,
+.table > thead > tr.primary > th,
+.table > tbody > tr.primary > th,
+.table > tfoot > tr.primary > th {
+	background-color: #00533f;
+	color: white;
+}
+
+/* Tabla 'pricing' para especiales de exámenes : inglés y francés del CUID */
+.pricing-table.princig-table-flat.ingles .plan h3 {
+	background-color: #ff7624;
+}
+.pricing-table.princig-table-flat.frances .plan h3 {
+	background-color: #114697;
+}
+.pricing-table.princig-table-flat.ingles .plan h3 span {
+	background: #ff7624;
+}
+.pricing-table.princig-table-flat.frances .plan h3 span {
+	background: #114697;
+}
