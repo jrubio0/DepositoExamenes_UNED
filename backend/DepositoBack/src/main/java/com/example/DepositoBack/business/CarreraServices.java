@@ -7,4 +7,5 @@ import java.util.List;
 public interface CarreraServices {
 
     List<Carrera> getAll();
+    List<Carrera> getAllMasters();
 }

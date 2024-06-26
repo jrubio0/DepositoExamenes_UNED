@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarreraServicesImpl implements CarreraServices {
@@ -17,5 +18,10 @@ public class CarreraServicesImpl implements CarreraServices {
     @Override
     public List<Carrera> getAll() {
         return carreraRepository.findAll();
+    }
+
+    @Override
+    public List<Carrera> getAllMasters() {
+        return carreraRepository.findAllMasters();
     }
 }
