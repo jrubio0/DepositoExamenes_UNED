@@ -16,7 +16,7 @@ const Footer = () => {
               <div className="social-icons">
                 <ul className="social-icons">
                   <li className="facebook"><a href="http://facebook.com/UNEDCalatayud" target="_blank" data-placement="bottom" data-tooltip title="Facebook">Facebook</a></li>
-                  <li className="twitter"><a href="http://twitter.com/UNEDCalatayud" target="_blank" data-placement="bottom" data-tooltip title="Twitter">Twitter</a></li>
+                     <li className="twitter"><a href="http://twitter.com/UNEDCalatayud" target="_blank" data-placement="bottom" data-tooltip title="Twitter">Twitter</a></li>
                   <li className="instagram"><a href="http://instagram.com/UNEDCalatayud" target="_blank" data-placement="bottom" data-tooltip title="Instagram">Instagram</a></li>
                   <li className="youtube"><a href="http://www.youtube.com/user/unedcalatayud" target="_blank" data-placement="bottom" data-tooltip title="Youtube">Youtube</a></li>
                 </ul>
