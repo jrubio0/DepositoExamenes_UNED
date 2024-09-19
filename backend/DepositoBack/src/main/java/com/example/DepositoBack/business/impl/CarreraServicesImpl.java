@@ -24,4 +24,9 @@ public class CarreraServicesImpl implements CarreraServices {
     public List<Carrera> getAllMasters() {
         return carreraRepository.findAllMasters();
     }
+
+    @Override
+    public String getFacultadNameById(Long id) {
+        return carreraRepository.getFacultadNameById(id);
+    }
 }

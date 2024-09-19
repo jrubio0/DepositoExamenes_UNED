@@ -4,6 +4,7 @@ import com.example.DepositoBack.business.CarreraServices;
 import com.example.DepositoBack.model.Carrera;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,5 +26,10 @@ public class CarreraController {
     @GetMapping("/masters")
     public List<Carrera> getAllMasters() {
         return carreraServices.getAllMasters();
+    }
+
+    @GetMapping("/facultadNameById/{id}")
+    public String getFacultadById(@PathVariable Long id) {
+        return carreraServices.getFacultadNameById(id);
     }
 }

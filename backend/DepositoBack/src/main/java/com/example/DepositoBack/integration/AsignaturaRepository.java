@@ -8,11 +8,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AsignaturaRepository extends JpaRepository<Asignatura, String> {
+public interface AsignaturaRepository extends JpaRepository<Asignatura, String> { //TODO Juntar las dos querys en una y pasarlo a JPQL
 
     @Query(value = "SELECT ID_Asignatura FROM Asignaturas_R_Carreras WHERE ID_Carrera = :idCarrera", nativeQuery = true)
     List<String> getAsignaturasByCarrera(String idCarrera);
 
     @Query(value = "SELECT * FROM Asignaturas WHERE ID_Asignatura = :idAsignatura", nativeQuery = true)
     Asignatura getNameById(String idAsignatura);
+
 }

@@ -10,4 +10,7 @@ public class DepositoBackApplication {
 		SpringApplication.run(DepositoBackApplication.class, args);
 	}
 
+	//Importante: cuando la página pase a un entorno de producción hay que ajustar la configuracion de CORS para reflejar el nuevo entorno.
+
+
 }

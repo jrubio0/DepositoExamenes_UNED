@@ -8,4 +8,5 @@ public interface CarreraServices {
 
     List<Carrera> getAll();
     List<Carrera> getAllMasters();
+    String getFacultadNameById(Long id);
 }
