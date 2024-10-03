@@ -32,4 +32,9 @@ public class CarreraController {
     public String getFacultadById(@PathVariable Long id) {
         return carreraServices.getFacultadNameById(id);
     }
+
+    @GetMapping("/cantidadSoluciones")
+    public int getCantidadSoluciones() {
+        return carreraServices.getCantidadSoluciones();
+    }
 }

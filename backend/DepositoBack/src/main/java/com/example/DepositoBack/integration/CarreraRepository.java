@@ -16,6 +16,9 @@ public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
     @Query(value = "SELECT * FROM Carreras WHERE ID_TipoEnsenanza = 6  AND ID_TipoCarrera = 1 ORDER BY ID_Facultad ASC, ID_Carrera", nativeQuery = true)
     List<Carrera> findAllMasters();
 
+    @Query(value = "SELECT COUNT(*) FROM ExamenesYSoluciones;", nativeQuery = true)
+    int getCantidadSoluciones();
+
     //Consulta original de la antigua web:
 
     //SELECT * FROM Carreras c INNER JOIN TiposCarreras t ON c.ID_TipoCarrera = t.ID_TipoCarrera
