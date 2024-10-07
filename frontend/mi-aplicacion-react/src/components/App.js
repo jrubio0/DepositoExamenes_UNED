@@ -1,16 +1,28 @@
 import React from 'react';
-import './App.css';
 import Header from './Header';
-import Body from './Body';
-import Footer from './Footer';
+import Carreras from "./Carreras";
+import Footer from "./Footer";
+import Prueba from './Prueba';
+import StickyScroller from './StickyScroller';
+import  "../css/app.css";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <Router>
+
       <Header />
-      <Body />
+
+      
+
+      <Routes>
+        <Route path="/" element={<Carreras />} />
+        <Route path="/prueba" element={<Prueba />} />
+      </Routes>
+
       <Footer />
-    </div>
+      <StickyScroller />
+    </Router>
   );
 }
 

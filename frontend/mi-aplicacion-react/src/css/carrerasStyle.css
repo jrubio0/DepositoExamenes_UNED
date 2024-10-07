@@ -28,7 +28,7 @@ td {
 }
 
 .nombreCurso {
-    color: #003300;
+    color: #00533f;
     font-size: 1rem;
     text-decoration: none;
 }
@@ -45,4 +45,55 @@ h1 {
 
 small {
     color: #666;
+}
+
+.facultades {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: left;
+    color: #003300;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.facultad {
+    background-color: #f3f3f3;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.facultad p {
+    margin: 0.5rem;
+    color: #003300;
+}
+
+.iconoFacultad {
+    color: #00533f;
+    margin-left: 10px;
+}
+
+.master:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.masteres {
+    margin-left: 1rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 1s ease, opacity 0.5s ease;
+}
+
+.masteres.expanded {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+.tablaIdiomas {
+    margin-bottom: 50px;
 }

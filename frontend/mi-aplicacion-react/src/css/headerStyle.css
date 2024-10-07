@@ -43,11 +43,24 @@
 .logo {
     height: 70px;
     margin-left: 20%;
+    cursor: pointer;
 }
+
 
 .whiteHeader p {
     margin-right: 20%;
     color: #666;
     font-weight: bold;
     font-size: 0.8rem;
+    height: 70%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.whiteHeader p:hover {
+    background-color: #00533f;
+    cursor: pointer;
+    color:white;
 }
