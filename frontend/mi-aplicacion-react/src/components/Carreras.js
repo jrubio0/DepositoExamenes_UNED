@@ -176,7 +176,7 @@ const Carreras = () => {
   const [cantidadSoluciones, setCantidadSoluciones] = useState(null);
   
   useEffect(() => {
-    axios.get('http://localhost:8080/carreras/cantidadSoluciones') //Modificar en entorno de produccion response.data
+    axios.get('http://localhost:8080/carreras/cantidadSoluciones') //Hacer clase llamada backendService para juntar toda esta logica
       .then(response => {
         setCantidadSoluciones(response.data);
       })
@@ -202,7 +202,6 @@ const Carreras = () => {
         <TablaIdiomas />
       </div>
     </div>
-
   )
 };
 
