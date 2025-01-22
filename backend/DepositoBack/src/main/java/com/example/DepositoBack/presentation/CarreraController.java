@@ -35,6 +35,7 @@ public class CarreraController {
 
     @GetMapping("/cantidadSoluciones")
     public int getCantidadSoluciones() {
-        return carreraServices.getCantidadSoluciones();
+        int sol = carreraServices.getCantidadSoluciones();
+        return sol;
     }
 }
