@@ -11,8 +11,8 @@ function TablaCursosDeAcceso() {
   return (
     <table>
       <tr>
-        <td><Link className="nombreCurso" to="/prueba">Curso de acceso para <strong>mayores de 25 a&ntilde;os</strong></Link></td>
-        <td><Link className="nombreCurso" href="">Curso de acceso para <strong>mayores de 45 a&ntilde;os</strong></Link></td>
+        <td><Link className="nombreCurso" to="">Curso de acceso para <strong>mayores de 25 a&ntilde;os</strong></Link></td>
+        <td><Link className="nombreCurso" to="">Curso de acceso para <strong>mayores de 45 a&ntilde;os</strong></Link></td>
       </tr>
     </table>
   );
@@ -22,64 +22,64 @@ function TablaGrados() {
   return (
     <table>
       <tr>
-        <td><Link className="nombreCurso" href="">Administración y Dirección de Empresas</Link>,&nbsp;<small>&nbsp;6502</small></td>
-        <td><Link className="nombreCurso" href="">Antropología Social y Cultural</Link>,&nbsp;<small>&nbsp;7002</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6502">Administración y Dirección de Empresas</Link>,&nbsp;<small>&nbsp;6502</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/7002">Antropología Social y Cultural</Link>,&nbsp;<small>&nbsp;7002</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Ciencias Jurídicas de las Administraciones Públicas</Link>,&nbsp;<small>&nbsp;6601</small></td>
-        <td><Link className="nombreCurso" href="">Ciencia política y de la Administración</Link>,&nbsp;<small>&nbsp;6901</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6601">Ciencias Jurídicas de las Administraciones Públicas</Link>,&nbsp;<small>&nbsp;6601</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6901">Ciencia política y de la Administración</Link>,&nbsp;<small>&nbsp;6901</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Ciencias Ambientales</Link>,&nbsp;<small>&nbsp;6101</small></td>
-        <td><Link className="nombreCurso" href="">Criminología</Link>,&nbsp;<small>&nbsp;6604</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6101">Ciencias Ambientales</Link>,&nbsp;<small>&nbsp;6101</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6604">Criminología</Link>,&nbsp;<small>&nbsp;6604</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Derecho</Link>,&nbsp;<small>&nbsp;6602</small></td>
-        <td><Link className="nombreCurso" href="">Economía</Link>,&nbsp;<small>&nbsp;6501</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6602">Derecho</Link>,&nbsp;<small>&nbsp;6602</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6501">Economía</Link>,&nbsp;<small>&nbsp;6501</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Educación infantil</Link>,&nbsp;<small>&nbsp;6303</small></td>
-        <td><Link className="nombreCurso" href="">Educación Social</Link>,&nbsp;<small>&nbsp;6301</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6303">Educación infantil</Link>,&nbsp;<small>&nbsp;6303</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6301">Educación Social</Link>,&nbsp;<small>&nbsp;6301</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Estudios Ingleses</Link>,&nbsp;<small>&nbsp;6402</small></td>
-        <td><Link className="nombreCurso" href="">Filosofía</Link>,&nbsp;<small>&nbsp;7001</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6402">Estudios Ingleses</Link>,&nbsp;<small>&nbsp;6402</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/7001">Filosofía</Link>,&nbsp;<small>&nbsp;7001</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Física</Link>,&nbsp;<small>&nbsp;6104</small></td>
-        <td><Link className="nombreCurso" href="">Geografía e Historia</Link>,&nbsp;<small>&nbsp;6701</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6104">Física</Link>,&nbsp;<small>&nbsp;6104</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6701">Geografía e Historia</Link>,&nbsp;<small>&nbsp;6701</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Historia del Arte</Link>,&nbsp;<small>&nbsp;6702</small></td>
-        <td><Link className="nombreCurso" href="">Ingeniería Electrónica Industrial y automática</Link>,&nbsp;<small>&nbsp;6802</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6702">Historia del Arte</Link>,&nbsp;<small>&nbsp;6702</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6802">Ingeniería Electrónica Industrial y automática</Link>,&nbsp;<small>&nbsp;6802</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Ingeniería Eléctrica</Link>,&nbsp;<small>&nbsp;6801</small></td>
-        <td><Link className="nombreCurso" href="">Ingeniería Energía</Link>,&nbsp;<small>&nbsp;6805</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6801">Ingeniería Eléctrica</Link>,&nbsp;<small>&nbsp;6801</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6805">Ingeniería Energía</Link>,&nbsp;<small>&nbsp;6805</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Ingeniería Tecnología Industrial</Link>,&nbsp;<small>&nbsp;6804</small></td>
-        <td><Link className="nombreCurso" href="">Ingeniería Tecnologías Información</Link>,&nbsp;<small>&nbsp;7102</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6804">Ingeniería Tecnología Industrial</Link>,&nbsp;<small>&nbsp;6804</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/7102">Ingeniería Tecnologías Información</Link>,&nbsp;<small>&nbsp;7102</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Ingeniería Informática</Link>,&nbsp;<small>&nbsp;7101</small></td>
-        <td><Link className="nombreCurso" href="">Ingeniería Mecánica</Link>,&nbsp;<small>&nbsp;6803</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/7101">Ingeniería Informática</Link>,&nbsp;<small>&nbsp;7101</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6803">Ingeniería Mecánica</Link>,&nbsp;<small>&nbsp;6803</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Lengua y Literatura Españolas</Link>,&nbsp;<small>&nbsp;6401</small></td>
-        <td><Link className="nombreCurso" href="">Matemáticas</Link>,&nbsp;<small>&nbsp;6102</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6401">Lengua y Literatura Españolas</Link>,&nbsp;<small>&nbsp;6401</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6102">Matemáticas</Link>,&nbsp;<small>&nbsp;6102</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Pedagogía</Link>,&nbsp;<small>&nbsp;6302</small></td>
-        <td><Link className="nombreCurso" href="">Psicología</Link>,&nbsp;<small>&nbsp;6201</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6302">Pedagogía</Link>,&nbsp;<small>&nbsp;6302</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6201">Psicología</Link>,&nbsp;<small>&nbsp;6201</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Química</Link>,&nbsp;<small>&nbsp;6103</small></td>
-        <td><Link className="nombreCurso" href="">Sociología</Link>,&nbsp;<small>&nbsp;6902</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6103">Química</Link>,&nbsp;<small>&nbsp;6103</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6902">Sociología</Link>,&nbsp;<small>&nbsp;6902</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso" href="">Trabajo Social</Link>,&nbsp;<small>&nbsp;6603</small></td>
-        <td><Link className="nombreCurso" href="">Turismo</Link>,&nbsp;<small>&nbsp;6503</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6603">Trabajo Social</Link>,&nbsp;<small>&nbsp;6603</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/6503">Turismo</Link>,&nbsp;<small>&nbsp;6503</small></td>
       </tr>
     </table>
   );
