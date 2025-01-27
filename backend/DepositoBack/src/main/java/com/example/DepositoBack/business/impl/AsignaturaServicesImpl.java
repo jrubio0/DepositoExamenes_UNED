@@ -17,8 +17,6 @@ public class AsignaturaServicesImpl implements AsignaturaServices {
 
     @Override
     public List<Asignatura> getAsignaturasByCarrera(String idCarrera) {
-        return asignaturaRepository.getAsignaturasByCarrera(idCarrera).stream().map(
-                x -> asignaturaRepository.getNameById(x)
-        ).collect(Collectors.toList());
+        return asignaturaRepository.getAsignaturasByCarrera(idCarrera);
     }
 }

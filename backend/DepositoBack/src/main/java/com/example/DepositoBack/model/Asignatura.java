@@ -13,17 +13,10 @@ public class Asignatura {
     private String idAsignatura;
     @Column(name="nombreasignatura")
     private String nombreAsignatura;
-    @Column(name="urlasignatura")
-    private String urlAsignatura;
-    @Column(name="creditos")
-    private int creditos;
-    private int cuatrimestre;
+    @Column(name="curso")
+    private String curso;
     @Column(name="id_tipoasignatura")
-    private int idTipoAsignatura;
-    @Column(name="variosprofesores")
-    private int variosProfesores;
-    @Column(name="sinexamen")
-    private int sinExamen;
+    private String idTipoasignatura;
 
     public String getIdAsignatura() {
         return idAsignatura;
@@ -41,52 +34,20 @@ public class Asignatura {
         this.nombreAsignatura = nombreAsignatura;
     }
 
-    public String getUrlAsignatura() {
-        return urlAsignatura;
+    public String getCurso() {
+        return curso;
     }
 
-    public void setUrlAsignatura(String urlAsignatura) {
-        this.urlAsignatura = urlAsignatura;
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
 
-    public int getCreditos() {
-        return creditos;
+    public String getIdTipoasignatura() {
+        return idTipoasignatura;
     }
 
-    public void setCreditos(int creditos) {
-        this.creditos = creditos;
-    }
-
-    public int getCuatrimestre() {
-        return cuatrimestre;
-    }
-
-    public void setCuatrimestre(int cuatrimestre) {
-        this.cuatrimestre = cuatrimestre;
-    }
-
-    public int getIdTipoAsignatura() {
-        return idTipoAsignatura;
-    }
-
-    public void setIdTipoAsignatura(int idTipoAsignatura) {
-        this.idTipoAsignatura = idTipoAsignatura;
-    }
-
-    public int getVariosProfesores() {
-        return variosProfesores;
-    }
-
-    public void setVariosProfesores(int variosProfesores) {
-        this.variosProfesores = variosProfesores;
-    }
-
-    public int getSinExamen() {
-        return sinExamen;
-    }
-
-    public void setSinExamen(int sinExamen) {
-        this.sinExamen = sinExamen;
+    public void setIdTipoasignatura(String idTipoasignatura) {
+        this.idTipoasignatura = idTipoasignatura;
     }
 
     @Override
@@ -94,12 +55,8 @@ public class Asignatura {
         return "Asignatura{" +
                 "idAsignatura='" + idAsignatura + '\'' +
                 ", nombreAsignatura='" + nombreAsignatura + '\'' +
-                ", urlAsignatura='" + urlAsignatura + '\'' +
-                ", creditos=" + creditos +
-                ", cuatrimestre=" + cuatrimestre +
-                ", idTipoAsignatura=" + idTipoAsignatura +
-                ", variosProfesores=" + variosProfesores +
-                ", sinExamen=" + sinExamen +
+                ", curso='" + curso + '\'' +
+                ", idTipoasignatura='" + idTipoasignatura + '\'' +
                 '}';
     }
 }
