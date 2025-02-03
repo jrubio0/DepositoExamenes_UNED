@@ -4,7 +4,7 @@ import Carreras from "./Carreras";
 import Footer from "./Footer";
 import Asignaturas from './Asignaturas';
 import StickyScroller from './StickyScroller';
-import  "../css/app.css";
+import "../css/app.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -13,11 +13,11 @@ function App() {
 
       <Header />
 
-      
+
 
       <Routes>
         <Route path="/" element={<Carreras />} />
-        <Route path="/asignaturas/:idCarrera" element={<Asignaturas/>} />
+        <Route path="/asignaturas/:idCarrera" element={<Asignaturas />} />
       </Routes>
 
       <Footer />

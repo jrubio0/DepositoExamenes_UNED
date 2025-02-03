@@ -13,7 +13,7 @@ public class Asignatura {
     private String idAsignatura;
     @Column(name="nombreasignatura")
     private String nombreAsignatura;
-    @Column(name="curso")
+    @Column(name="id_curso")
     private String curso;
     @Column(name="id_tipoasignatura")
     private String idTipoasignatura;

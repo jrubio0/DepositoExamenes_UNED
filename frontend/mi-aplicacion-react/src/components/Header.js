@@ -7,12 +7,12 @@ const Header = () => {
   return (
     <div class="header top">
       <div class="whiteHeader">
-        <img src={logo} class="logo"/>
+        <img src={logo} class="logo" />
         <p>EXÁMENES</p>
       </div>
       <div class="greenHeader">
-          <p class="breadcrumbs">UNED Calatayud / Depósito de exámenes</p>
-          <p class="title">Selección de carrera</p>
+        <p class="breadcrumbs">UNED Calatayud / Depósito de exámenes</p>
+        <p class="title">Selección de carrera</p>
       </div>
     </div>
   );

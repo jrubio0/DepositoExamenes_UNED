@@ -19,7 +19,6 @@ public class AsignaturaController {
 
     @GetMapping
     public List<Asignatura> getAllByCarrera(@RequestParam(value="carrera", required=true) String idCarrera) { //Ej: 6201, 6602
-        System.out.println("Hola el id de la carrera es : " + idCarrera);
         return asignaturaServices.getAsignaturasByCarrera(idCarrera);
     }
 

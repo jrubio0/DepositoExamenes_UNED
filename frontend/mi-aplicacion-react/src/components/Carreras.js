@@ -174,7 +174,7 @@ function TablaIdiomas() {
 const Carreras = () => {
 
   const [cantidadSoluciones, setCantidadSoluciones] = useState(null);
-  
+
   useEffect(() => {
     axios.get('http://localhost:8080/carreras/cantidadSoluciones') //Hacer clase llamada backendService para juntar toda esta logica
       .then(response => {
