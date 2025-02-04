@@ -31,6 +31,9 @@ public class CarreraServicesImpl implements CarreraServices {
     }
 
     @Override
+    public String getCarreraNameById(Long id) { return carreraRepository.getCarreraNameById(id); }
+
+    @Override
     public int getCantidadSoluciones() {
         return carreraRepository.getCantidadSoluciones();
     }

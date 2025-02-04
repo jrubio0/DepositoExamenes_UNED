@@ -2,7 +2,6 @@ import '../css/carrerasStyle.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { UseState } from 'react';
 
 
 // <i class="fa fa-chevron-up"></i>
@@ -186,19 +185,19 @@ const Carreras = () => {
     <div className="cursos">
       <p className="numSoluciones">Disponemos de <strong>{cantidadSoluciones} enunciados y soluciones</strong></p>
       <div className="curso">
-        <h1>Cursos de <strong>Acceso</strong></h1>
+        <h1 className="h1Carreras">Cursos de <strong>Acceso</strong></h1>
         <TablaCursosDeAcceso />
       </div>
       <div className="curso">
-        <h1><strong>Grados</strong> EEES</h1>
+        <h1 className="h1Carreras"><strong>Grados</strong> EEES</h1>
         <TablaGrados />
       </div>
       <div className="curso">
-        <h1><strong>Másteres</strong> EEES</h1>
+        <h1 className="h1Carreras"><strong>Másteres</strong> EEES</h1>
         <TablaMasteres />
       </div>
       <div className="curso tablaIdiomas">
-        <h1><strong>Idiomas</strong></h1>
+        <h1 className="h1Carreras"><strong>Idiomas</strong></h1>
         <TablaIdiomas />
       </div>
     </div>

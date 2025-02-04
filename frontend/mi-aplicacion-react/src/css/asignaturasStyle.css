@@ -1,0 +1,61 @@
+.todoAsignaturas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.nombreCarrera {
+    background-color: rgb(247, 247, 247);
+    font-size: 1.3rem;
+    width: 60%;
+    padding: 1rem;;
+}
+.nombreCarreraP {
+    margin: 0px;
+}
+
+.asigCursos {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    flex-wrap: wrap;
+  
+}
+
+.asigCurso {
+    width: 48%;
+    margin-bottom: 2rem;
+    margin-right: 1rem;
+}
+
+.asigCheckBox {
+    margin-bottom: 2px;
+}
+
+.asigCheckBoxLabel {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 10px;
+}
+
+.labelSpan {
+    font-size: 0.7rem;
+    color:#9e9d9d
+}
+
+.continuar {
+    width: 60%;
+}
+
+.continuarButton {
+    background-color: #00533f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}

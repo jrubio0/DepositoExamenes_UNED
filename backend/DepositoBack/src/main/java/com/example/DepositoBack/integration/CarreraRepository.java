@@ -20,6 +20,9 @@ public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
     @Query(value = "SELECT NombreFacultad FROM Facultades WHERE ID_Facultad = :id", nativeQuery = true)
     String getFacultadNameById(Long id);
 
+    @Query(value = "SELECT NombreCarrera FROM Carreras WHERE ID_Carrera = :id", nativeQuery = true)
+    String getCarreraNameById(Long id);
+
     @Query(value = "SELECT * FROM Carreras WHERE ID_TipoEnsenanza = 6  AND ID_TipoCarrera = 1 ORDER BY ID_Facultad ASC, ID_Carrera", nativeQuery = true)
     List<Carrera> findAllMasters();
 
