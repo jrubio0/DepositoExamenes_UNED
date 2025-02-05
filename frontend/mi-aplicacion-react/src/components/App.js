@@ -4,6 +4,7 @@ import Carreras from "./Carreras";
 import Footer from "./Footer";
 import Asignaturas from './Asignaturas';
 import StickyScroller from './StickyScroller';
+import Examenes from './Examenes';
 import "../css/app.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Carreras />} />
         <Route path="/asignaturas/:idCarrera" element={<Asignaturas />} />
+        <Route path="/examenes" element={<Examenes />} />
       </Routes>
 
       <Footer />

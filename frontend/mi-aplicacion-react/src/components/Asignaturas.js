@@ -1,14 +1,17 @@
 import '../css/asignaturasStyle.css';
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const Asignaturas = () => {
 
+  const navigate = useNavigate();
   const { idCarrera } = useParams();
   const [asignaturas, setAsignaturas] = useState({});
   const [carrera, setCarrera] = useState('');
+  const nombresCursos = ["Primer curso", "Segundo curso", "Tercer curso", "Cuarto curso"];
+  const [selectedAsignaturas, setSelectedAsignaturas] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:8080/asignaturas?carrera=' + idCarrera)
@@ -30,8 +33,18 @@ const Asignaturas = () => {
   }, []);
 
   const handleCheckboxChange = (event) => {
-
+    const { id, value, checked } = event.target;
+    if (checked) {
+      setSelectedAsignaturas(prev => [...prev, { nombreAsignatura: value, idAsignatura: id}]);
+    } else {
+      setSelectedAsignaturas(prev => prev.filter(asignatura => asignatura.idAsignatura !== id));
+    }
   };
+
+  const handleContinuar = () => {
+    navigate("/examenes", { state: { selectedAsignaturas: selectedAsignaturas } });
+
+  }
 
   return (
     <div className="todoAsignaturas">
@@ -42,7 +55,7 @@ const Asignaturas = () => {
       <div className="asigCursos">
         {[1, 2, 3, 4].map((curso, index) => (
           <div className="asigCurso" key={curso}>
-            <p><strong>Curso {curso}</strong></p>
+            <p><strong>{nombresCursos[index]}</strong></p>
             {asignaturas[curso]?.map(asignatura => (
               <div className="asigCheckBox">
                 <input type="checkbox" id={asignatura.idAsignatura} value={asignatura.nombreAsignatura} onChange={handleCheckboxChange} />
@@ -54,7 +67,7 @@ const Asignaturas = () => {
         ))}
       </div>
       <div className="continuar">
-        <button className="continuarButton">Continuar</button>
+        <button className="continuarButton" onClick={handleContinuar}>Continuar</button>
       </div>
 
     </div>
