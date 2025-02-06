@@ -1,0 +1,10 @@
+.todoExamenes {
+    width: 60%;
+    margin: auto;
+}
+
+.asignaturaId {
+    font-size: 1.3rem;
+    font-weight: lighter;
+    color: #666;
+}
