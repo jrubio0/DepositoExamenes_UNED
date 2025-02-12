@@ -4,6 +4,7 @@ import Carreras from "./Carreras";
 import Footer from "./Footer";
 import Asignaturas from './Asignaturas';
 import StickyScroller from './StickyScroller';
+import ScrollToTop from './ScrollToTop';
 import Examenes from './Examenes';
 import "../css/app.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -11,7 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <Router>
-
+      <ScrollToTop />
       <Header />
 
 

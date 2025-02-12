@@ -10,8 +10,8 @@ function TablaCursosDeAcceso() {
   return (
     <table>
       <tr>
-        <td><Link className="nombreCurso" to="">Curso de acceso para <strong>mayores de 25 a&ntilde;os</strong></Link></td>
-        <td><Link className="nombreCurso" to="">Curso de acceso para <strong>mayores de 45 a&ntilde;os</strong></Link></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0001">Curso de acceso para <strong>mayores de 25 a&ntilde;os</strong></Link></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0002">Curso de acceso para <strong>mayores de 45 a&ntilde;os</strong></Link></td>
       </tr>
     </table>
   );

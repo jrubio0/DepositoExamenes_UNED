@@ -10,13 +10,13 @@ const Asignaturas = () => {
   const { idCarrera } = useParams();
   const [asignaturas, setAsignaturas] = useState({});
   const [carrera, setCarrera] = useState('');
-  const nombresCursos = ["Primer curso", "Segundo curso", "Tercer curso", "Cuarto curso"];
+  const nombresCursos = ["", "Primer curso", "Segundo curso", "Tercer curso", "Cuarto curso", "", "", ""];
   const [selectedAsignaturas, setSelectedAsignaturas] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:8080/asignaturas?carrera=' + idCarrera)
       .then(response => {
-        const cursos = { 1: [], 2: [], 3: [], 4: [] };
+        const cursos = { 0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [] };
         response.data.forEach(asignatura => {
           if (cursos[asignatura.curso]) {
             cursos[asignatura.curso].push(asignatura);
@@ -35,7 +35,7 @@ const Asignaturas = () => {
   const handleCheckboxChange = (event) => {
     const { id, value, checked } = event.target;
     if (checked) {
-      setSelectedAsignaturas(prev => [...prev, { nombreAsignatura: value, idAsignatura: id}]);
+      setSelectedAsignaturas(prev => [...prev, { nombreAsignatura: value, idAsignatura: id }]);
     } else {
       setSelectedAsignaturas(prev => prev.filter(asignatura => asignatura.idAsignatura !== id));
     }
@@ -53,15 +53,20 @@ const Asignaturas = () => {
         <small>Seleccione las asignaturas deseadas y pulse el botón Continuar</small>
       </div>
       <div className="asigCursos">
-        {[1, 2, 3, 4].map((curso, index) => (
+        {[0, 1, 2, 3, 4, 5, 6, 7].map((curso, index) => (
           <div className="asigCurso" key={curso}>
+            {asignaturas[curso]?.length === 0 && (
+              <div>
+                {console.log(asignaturas)}
+
+              </div>
+            )}
             <p><strong>{nombresCursos[index]}</strong></p>
             {asignaturas[curso]?.map(asignatura => (
               <div className="asigCheckBox">
                 <input type="checkbox" id={asignatura.idAsignatura} value={asignatura.nombreAsignatura} onChange={handleCheckboxChange} />
                 <label className="asigCheckBoxLabel" key={asignatura.idAsignatura}>{asignatura.nombreAsignatura}, <span className="labelSpan">{asignatura.idAsignatura}{asignatura.idTipoasignatura === '0' && ', Extinguida'}</span></label>
               </div>
-
             ))}
           </div>
         ))}

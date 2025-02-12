@@ -1,6 +1,11 @@
 .todoExamenes {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     width: 60%;
     margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
 }
 
 .asignaturaId {
@@ -19,6 +24,7 @@ td {
 th {
     background-color: #f2f2f2;
     font-weight: bold;
+    color: #666;
 }
 
 table {
@@ -33,6 +39,37 @@ table {
 
 .cellContent {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.cellContent img {
+    width: 1rem;
+    height: auto;
+}
+
+.totalExamenes {
+    border: 1px solid #b8b8b8;
+    background-color:#eeeeee;
+    padding: 0.3rem;
+}
+
+.totalExamenes p {
+    color: #666;
+    margin-left: 1rem;
+}
+
+.volverDepositoButton {
+    background-color: #00533f;
+    color: white;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.volverDepositoButton:hover {
+    background-color: #03664f;
 }
