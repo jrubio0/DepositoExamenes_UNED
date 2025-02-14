@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,6 +54,7 @@ public class AsignaturaServicesImpl implements AsignaturaServices {
                 cursos.add(nuevoCurso);
             }
         }
+        Collections.reverse(cursos); //Por esta linea se imprimen los cursos en el frontend mostrando primero los más recientes (a lo mejor seria mas optimo añadir DESC al final de la query)
         return cursos;
     }
 }

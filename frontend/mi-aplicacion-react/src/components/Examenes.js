@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import '../css/examenesStyle.css';
 import { getCursosDeAsignaturas } from '../services/backendService';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 
 const Examenes = () => {
 
@@ -16,21 +18,21 @@ const Examenes = () => {
         if (asignaturas.length === 0) return;
         const fetchCursos = async () => {
             try {
-              const cursosObtenidos = await getCursosDeAsignaturas(asignaturas);
-              setCursos(cursosObtenidos);
+                const cursosObtenidos = await getCursosDeAsignaturas(asignaturas);
+                setCursos(cursosObtenidos);
             } catch (error) {
-              console.error("Error fetching data:", error);
+                console.error("Error fetching data:", error);
             }
-          };
-      
-          fetchCursos();
+        };
+
+        fetchCursos();
     }, []);
 
     const hayRespuestas = (curso) => {
         return curso.examenes?.some((examen) => examen.idTipoArchivo === '1');
     }
 
-     //En la base de datos el idTipoArchivo = 0 es examen y el idTipoArchivo = 1 es respuesta
+    //En la base de datos el idTipoArchivo = 0 es examen y el idTipoArchivo = 1 es respuesta
     const getExamenesPorConvocatoria = (curso, convocatoria) => {
         return curso.examenes?.filter(examen => examen.idConvocatoriaExamen === convocatoria && examen.idTipoArchivo === '0') || [];
     }
@@ -61,7 +63,7 @@ const Examenes = () => {
     }
 
     const cuentaExamenes = (soluciones) => {
-        const tipoArchivo = soluciones? '1' : '0';
+        const tipoArchivo = soluciones ? '1' : '0';
         let contador = 0;
         asignaturas.map((asignatura, index) => (
             cursos[asignatura.idAsignatura]?.map(curso => (
@@ -69,14 +71,58 @@ const Examenes = () => {
                     if (examen.idTipoArchivo === tipoArchivo) {
                         contador++;
                     }
-                })
-            ))
-        ))
+                })))))
         return contador;
+    }
+
+    const getCurrentCursoAcademico = () => {
+        let currentCursoAcademico = 0;
+        asignaturas.map((asignatura, index) => (
+            cursos[asignatura.idAsignatura]?.map(curso => (
+                curso.examenes.map(examen => {
+                    if (examen.idCursoAcademico > currentCursoAcademico) {
+                        currentCursoAcademico = examen.idCursoAcademico;
+                    }
+                })))))
+        return currentCursoAcademico;
     }
 
     const handleVolverDeposito = () => {
         navigate("/");
+    }
+
+    const handleDescargar = (idAsignatura) => {
+        const pdfs = [];
+        const currentCursoAcademico = getCurrentCursoAcademico();
+        cursos[idAsignatura]?.map(curso => (
+            curso.examenes.map(examen => {
+                if (examen.idCursoAcademico === currentCursoAcademico) {
+                    pdfs.push("http://www.calatayud.uned.es" + examen.rutaFichero + examen.nombreFichero);
+                }
+            })))
+
+        const zip = new JSZip();
+
+        const promises = pdfs.map((pdfUrl) =>
+            fetch(pdfUrl)
+                .then((response) => response.blob())
+                .then((blob) => {
+                    const pdfName = pdfUrl.split('/').pop();
+                    zip.file(pdfName, blob);
+                })
+        );
+
+        
+        Promise.all(promises)
+            .then(() => {
+                return zip.generateAsync({ type: 'blob' });
+            })
+            .then((content) => {
+                saveAs(content, 'archivos.zip');
+            })
+            .catch((error) => {
+                console.error('Error al crear el archivo ZIP:', error);
+            });
     }
 
 
@@ -149,7 +195,7 @@ const Examenes = () => {
                             ))}
                         </tbody>
                     </table>
-
+                    <button className="descargarButton" onClick={() => handleDescargar(asignatura.idAsignatura)}><i class="fa-solid fa-download"></i> Descargar exámenes del último curso</button>
                 </div>
             ))}
             <div className="totalExamenes">

@@ -73,3 +73,18 @@ table {
 .volverDepositoButton:hover {
     background-color: #03664f;
 }
+
+.descargarButton {
+    margin-top: 1rem;
+    background-color: #00533f;
+    color: white;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.descargarButton:hover {
+    background-color: #03664f;
+}
