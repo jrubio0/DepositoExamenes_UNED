@@ -7,13 +7,30 @@ import StickyScroller from './StickyScroller';
 import ScrollToTop from './ScrollToTop';
 import Examenes from './Examenes';
 import "../css/app.css";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 function App() {
+
+  const location = useLocation();
+
+  const getHeaderBreadcrumbs = () => {
+    //Para que funcione esto he tenido que mover el <Router> al index.js y aqui dejar simplemente un <div>
+    switch (location.pathname) {
+      case '/':
+        return 'Selección de carrera';
+      case '/asignaturas':
+        return 'Selección de carrera';
+      case '/examenes':
+        return 'Asignaturas seleccionadas';
+      default:
+        return 'Selección de carrera';
+    }
+  };
+
   return (
-    <Router>
+    <div>
       <ScrollToTop />
-      <Header />
+      <Header breadcrumbs={getHeaderBreadcrumbs()}/>
 
 
 
@@ -25,7 +42,7 @@ function App() {
 
       <Footer />
       <StickyScroller />
-    </Router>
+    </div>
   );
 }
 

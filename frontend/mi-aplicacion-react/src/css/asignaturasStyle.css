@@ -19,10 +19,9 @@
 
 .asigCursos {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     width: 60%;
     flex-wrap: wrap;
-  
 }
 
 .asigCurso {

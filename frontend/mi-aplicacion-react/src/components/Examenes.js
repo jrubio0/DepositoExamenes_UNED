@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import '../css/examenesStyle.css';
+import { getCursosDeAsignaturas } from '../services/backendService';
 
 const Examenes = () => {
 
@@ -16,29 +16,21 @@ const Examenes = () => {
         if (asignaturas.length === 0) return;
         const fetchCursos = async () => {
             try {
-                const responses = await Promise.all(
-                    asignaturas.map(asignatura =>
-                        axios.get(`http://localhost:8080/asignaturas/cursos?asignatura=${asignatura.idAsignatura}`)
-                    )
-                );
-                const cursosPorAsignatura = {};
-                asignaturas.forEach((asignatura, index) => {
-                    cursosPorAsignatura[asignatura.idAsignatura] = responses[index].data;
-                });
-
-                setCursos(cursosPorAsignatura);
-                console.log(cursos);
+              const cursosObtenidos = await getCursosDeAsignaturas(asignaturas);
+              setCursos(cursosObtenidos);
             } catch (error) {
-                console.error("Error fetching data:", error);
+              console.error("Error fetching data:", error);
             }
-        };
-        fetchCursos();
+          };
+      
+          fetchCursos();
     }, []);
 
     const hayRespuestas = (curso) => {
         return curso.examenes?.some((examen) => examen.idTipoArchivo === '1');
     }
 
+     //En la base de datos el idTipoArchivo = 0 es examen y el idTipoArchivo = 1 es respuesta
     const getExamenesPorConvocatoria = (curso, convocatoria) => {
         return curso.examenes?.filter(examen => examen.idConvocatoriaExamen === convocatoria && examen.idTipoArchivo === '0') || [];
     }

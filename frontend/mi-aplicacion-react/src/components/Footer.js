@@ -78,7 +78,6 @@ const Footer = () => {
             <img title="Sello RSA+ 2023" alt="Sello RSA+ 2023" src={RSA}/>
             <img title="Sello de certificación del SGICG-CA" alt="Sello de certificación del SGICG-CA" src={SGIC}/>
           </div>
-          
           <div className="listaLegal elementoLegal">
               <ul>
                 <li><Link to="/web/transparencia/rgpd/aviso-legal.asp">Aviso legal</Link></li>

@@ -3,16 +3,21 @@ import '../css/headerStyle.css';
 import logo from '../img/logo-uned-calatayud.png';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ breadcrumbs }) => {
   return (
-    <div class="header top">
-      <div class="whiteHeader">
-        <img src={logo} class="logo" />
+    <div className="header top">
+      <div className="whiteHeader">
+        <div className="logo">
+          <Link to="/">
+            <img src={logo} className="logo" alt="Logo UNED Calatayud" />
+          </Link>
+        </div>
+
         <p>EXÁMENES</p>
       </div>
-      <div class="greenHeader">
-        <p class="breadcrumbs">UNED Calatayud / Depósito de exámenes</p>
-        <p class="title">Selección de carrera</p>
+      <div className="greenHeader">
+        <p className="breadcrumbs">UNED Calatayud / Depósito de exámenes</p>
+        <p className="title">{breadcrumbs}</p>
       </div>
     </div>
   );

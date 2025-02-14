@@ -1,7 +1,7 @@
 import '../css/carrerasStyle.css';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { getCantidadSoluciones, getFacultades } from '../services/backendService';
 
 
 // <i class="fa fa-chevron-up"></i>
@@ -89,9 +89,9 @@ function TablaMasteres() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/facultades') //Modificar en entorno de produccion
-      .then(response => {
-        setFacultades(response.data);
+    getFacultades()
+      .then(data => {
+        setFacultades(data);
       })
   }, []);
 
@@ -126,7 +126,7 @@ function TablaMasteres() {
             className={`masteres ${activeIndex === index ? 'expanded' : ''}`}
           >
             {item[1].listadoMasteres.map((master, masterIndex) => (
-              <p className="master nombreCurso" key={masterIndex}>{master.nombreCortoCarrera},&nbsp;<small>{master.idCarrera}</small></p>
+              <p className="master" key={masterIndex}><Link className="nombreCurso" to={"/asignaturas/" + master.idCarrera}>{master.nombreCortoCarrera},&nbsp;<small>{master.idCarrera}</small></Link></p>
             ))}
           </div>
         </div>
@@ -139,32 +139,32 @@ function TablaIdiomas() {
   return (
     <table>
       <tr>
-        <td><Link className="nombreCurso">Alem&aacute;n (CUID)</Link>,&nbsp;<small>&nbsp;0476</small></td>
-        <td><Link className="nombreCurso">&Aacute;rabe (CUID)</Link>,&nbsp;<small>&nbsp;0477</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0476">Alem&aacute;n (CUID)</Link>,&nbsp;<small>&nbsp;0476</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0477">&Aacute;rabe (CUID)</Link>,&nbsp;<small>&nbsp;0477</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso">Catal&aacute;n (CUID)</Link>,&nbsp;<small>&nbsp;0492</small></td>
-        <td><Link className="nombreCurso">Chino (CUID)</Link>,&nbsp;<small>&nbsp;0480</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0492">Catal&aacute;n (CUID)</Link>,&nbsp;<small>&nbsp;0492</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0480">Chino (CUID)</Link>,&nbsp;<small>&nbsp;0480</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso">Espa&ntilde;ol (CUID)</Link>,&nbsp;<small>&nbsp;0491</small></td>
-        <td><Link className="nombreCurso">Euskera (CUID)</Link>,&nbsp;<small>&nbsp;0493</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0491">Espa&ntilde;ol (CUID)</Link>,&nbsp;<small>&nbsp;0491</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0493">Euskera (CUID)</Link>,&nbsp;<small>&nbsp;0493</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso">Franc&eacute;s (CUID)</Link>,&nbsp;<small>&nbsp;0478</small></td>
-        <td><Link className="nombreCurso">Gallego (CUID)</Link>,&nbsp;<small>&nbsp;0494</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0478">Franc&eacute;s (CUID)</Link>,&nbsp;<small>&nbsp;0478</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0494">Gallego (CUID)</Link>,&nbsp;<small>&nbsp;0494</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso">Ingl&eacute;s (CUID)</Link>,&nbsp;<small>&nbsp;0479</small></td>
-        <td><Link className="nombreCurso">Italiano (CUID)</Link>,&nbsp;<small>&nbsp;0490</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0479">Ingl&eacute;s (CUID)</Link>,&nbsp;<small>&nbsp;0479</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0490">Italiano (CUID)</Link>,&nbsp;<small>&nbsp;0490</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso">Portugu&eacute;s (CUID)</Link>,&nbsp;<small>&nbsp;0481</small></td>
-        <td><Link className="nombreCurso">Ruso (CUID)</Link>,&nbsp;<small>&nbsp;0483</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0481">Portugu&eacute;s (CUID)</Link>,&nbsp;<small>&nbsp;0481</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0483">Ruso (CUID)</Link>,&nbsp;<small>&nbsp;0483</small></td>
       </tr>
       <tr>
-        <td><Link className="nombreCurso">Japon&eacute;s (CUID)</Link>,&nbsp;<small>&nbsp;0484</small></td>
-        <td><Link className="nombreCurso">Valenciano (CUID)</Link>,&nbsp;<small>&nbsp;0488</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0484">Japon&eacute;s (CUID)</Link>,&nbsp;<small>&nbsp;0484</small></td>
+        <td><Link className="nombreCurso" to="/asignaturas/0488">Valenciano (CUID)</Link>,&nbsp;<small>&nbsp;0488</small></td>
       </tr>
     </table>
   );
@@ -175,9 +175,9 @@ const Carreras = () => {
   const [cantidadSoluciones, setCantidadSoluciones] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/carreras/cantidadSoluciones') //Hacer clase llamada backendService para juntar toda esta logica
-      .then(response => {
-        setCantidadSoluciones(response.data);
+    getCantidadSoluciones()
+      .then(data => {
+        setCantidadSoluciones(data.toLocaleString("es-ES")); //Metodo toLocaleString me pone el punto para separar los millares
       })
   }, []);
 

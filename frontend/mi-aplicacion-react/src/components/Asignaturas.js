@@ -1,8 +1,8 @@
 import '../css/asignaturasStyle.css';
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { getAsignaturasPorCarrera, getCarreraNameById } from '../services/backendService';
 
 const Asignaturas = () => {
 
@@ -14,10 +14,10 @@ const Asignaturas = () => {
   const [selectedAsignaturas, setSelectedAsignaturas] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/asignaturas?carrera=' + idCarrera)
-      .then(response => {
+    getAsignaturasPorCarrera(idCarrera)
+      .then(data => {
         const cursos = { 0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [] };
-        response.data.forEach(asignatura => {
+        data.forEach(asignatura => {
           if (cursos[asignatura.curso]) {
             cursos[asignatura.curso].push(asignatura);
           }
@@ -26,7 +26,7 @@ const Asignaturas = () => {
       })
       .catch(error => console.error("Error fetching data:", error));
 
-    axios.get('http://localhost:8080/carreras/carreraNameById/' + idCarrera)
+    getCarreraNameById(idCarrera)
       .then(response => {
         setCarrera(response.data);
       })
@@ -54,27 +54,24 @@ const Asignaturas = () => {
       </div>
       <div className="asigCursos">
         {[0, 1, 2, 3, 4, 5, 6, 7].map((curso, index) => (
-          <div className="asigCurso" key={curso}>
-            {asignaturas[curso]?.length === 0 && (
-              <div>
-                {console.log(asignaturas)}
-
+          <>
+            {asignaturas[curso]?.length !== 0 && (
+              <div className="asigCurso" key={curso}>
+                <p><strong>{nombresCursos[index]}</strong></p>
+                {asignaturas[curso]?.map(asignatura => (
+                  <div className="asigCheckBox">
+                    <input type="checkbox" id={asignatura.idAsignatura} value={asignatura.nombreAsignatura} onChange={handleCheckboxChange} />
+                    <label className="asigCheckBoxLabel" key={asignatura.idAsignatura}>{asignatura.nombreAsignatura}, <span className="labelSpan">{asignatura.idAsignatura}{asignatura.idTipoasignatura === '0' && ', Extinguida'}</span></label>
+                  </div>
+                ))}
               </div>
             )}
-            <p><strong>{nombresCursos[index]}</strong></p>
-            {asignaturas[curso]?.map(asignatura => (
-              <div className="asigCheckBox">
-                <input type="checkbox" id={asignatura.idAsignatura} value={asignatura.nombreAsignatura} onChange={handleCheckboxChange} />
-                <label className="asigCheckBoxLabel" key={asignatura.idAsignatura}>{asignatura.nombreAsignatura}, <span className="labelSpan">{asignatura.idAsignatura}{asignatura.idTipoasignatura === '0' && ', Extinguida'}</span></label>
-              </div>
-            ))}
-          </div>
+          </>
         ))}
       </div>
       <div className="continuar">
         <button className="continuarButton" onClick={handleContinuar}>Continuar</button>
       </div>
-
     </div>
   );
 };
