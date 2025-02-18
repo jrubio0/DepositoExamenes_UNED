@@ -8,6 +8,7 @@ import { saveAs } from 'file-saver';
 
 const Examenes = () => {
 
+    const backendBaseURL = "http://localhost:8080/pdf?url="; //Cambiar en entorno de produccion
     const navigate = useNavigate();
     const location = useLocation();
     const asignaturas = location.state?.selectedAsignaturas || [];
@@ -75,16 +76,16 @@ const Examenes = () => {
         return contador;
     }
 
-    const getCurrentCursoAcademico = () => {
-        let currentCursoAcademico = 0;
-        asignaturas.map((asignatura, index) => (
-            cursos[asignatura.idAsignatura]?.map(curso => (
+    const getLastCursoAcademico = (idAsignatura) => {
+        let lastCursoAcademico = 0;
+
+            cursos[idAsignatura]?.map(curso => (
                 curso.examenes.map(examen => {
-                    if (examen.idCursoAcademico > currentCursoAcademico) {
-                        currentCursoAcademico = examen.idCursoAcademico;
+                    if (examen.idCursoAcademico > lastCursoAcademico) {
+                        lastCursoAcademico = examen.idCursoAcademico;
                     }
-                })))))
-        return currentCursoAcademico;
+                })))
+        return lastCursoAcademico;
     }
 
     const handleVolverDeposito = () => {
@@ -93,7 +94,7 @@ const Examenes = () => {
 
     const handleDescargar = (idAsignatura) => {
         const pdfs = [];
-        const currentCursoAcademico = getCurrentCursoAcademico();
+        const currentCursoAcademico = getLastCursoAcademico(idAsignatura);
         cursos[idAsignatura]?.map(curso => (
             curso.examenes.map(examen => {
                 if (examen.idCursoAcademico === currentCursoAcademico) {
@@ -102,9 +103,8 @@ const Examenes = () => {
             })))
 
         const zip = new JSZip();
-
         const promises = pdfs.map((pdfUrl) =>
-            fetch(pdfUrl)
+            fetch(backendBaseURL + pdfUrl)
                 .then((response) => response.blob())
                 .then((blob) => {
                     const pdfName = pdfUrl.split('/').pop();
@@ -118,7 +118,7 @@ const Examenes = () => {
                 return zip.generateAsync({ type: 'blob' });
             })
             .then((content) => {
-                saveAs(content, 'archivos.zip');
+                saveAs(content, 'examenes.zip');
             })
             .catch((error) => {
                 console.error('Error al crear el archivo ZIP:', error);
