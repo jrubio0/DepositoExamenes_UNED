@@ -79,13 +79,40 @@ const Examenes = () => {
     const getLastCursoAcademico = (idAsignatura) => {
         let lastCursoAcademico = 0;
 
+        cursos[idAsignatura]?.map(curso => (
+            curso.examenes.map(examen => {
+                if (examen.idCursoAcademico > lastCursoAcademico) {
+                    lastCursoAcademico = examen.idCursoAcademico;
+                }
+            })))
+        return lastCursoAcademico;
+    }
+
+    const fillPdfs = (idAsignatura) => {
+        const pdfs = [];
+        
+
+        if (idAsignatura) {
+            const lastCursoAcademico = getLastCursoAcademico(idAsignatura);
             cursos[idAsignatura]?.map(curso => (
                 curso.examenes.map(examen => {
-                    if (examen.idCursoAcademico > lastCursoAcademico) {
-                        lastCursoAcademico = examen.idCursoAcademico;
+                    if (examen.idCursoAcademico === lastCursoAcademico) {
+                        pdfs.push("http://www.calatayud.uned.es" + examen.rutaFichero + examen.nombreFichero);
                     }
                 })))
-        return lastCursoAcademico;
+        } else {
+            asignaturas.map((asignatura) => (
+                cursos[asignatura.idAsignatura]?.map(curso => (
+                    curso.examenes.map(examen => {
+                        const lastCursoAcademico = getLastCursoAcademico(asignatura.idAsignatura);
+                        if (examen.idCursoAcademico === lastCursoAcademico) {
+                            pdfs.push("http://www.calatayud.uned.es" + examen.rutaFichero + examen.nombreFichero);
+                        }
+                    })))
+            ))
+        }
+
+        return pdfs;
     }
 
     const handleVolverDeposito = () => {
@@ -93,14 +120,8 @@ const Examenes = () => {
     }
 
     const handleDescargar = (idAsignatura) => {
-        const pdfs = [];
-        const currentCursoAcademico = getLastCursoAcademico(idAsignatura);
-        cursos[idAsignatura]?.map(curso => (
-            curso.examenes.map(examen => {
-                if (examen.idCursoAcademico === currentCursoAcademico) {
-                    pdfs.push("http://www.calatayud.uned.es" + examen.rutaFichero + examen.nombreFichero);
-                }
-            })))
+
+        const pdfs = fillPdfs(idAsignatura);
 
         const zip = new JSZip();
         const promises = pdfs.map((pdfUrl) =>
@@ -112,7 +133,7 @@ const Examenes = () => {
                 })
         );
 
-        
+
         Promise.all(promises)
             .then(() => {
                 return zip.generateAsync({ type: 'blob' });
@@ -200,6 +221,7 @@ const Examenes = () => {
             ))}
             <div className="totalExamenes">
                 <p>Dispone de un total de <strong>{cuentaExamenes(false)} exámenes y {cuentaExamenes(true)} soluciones</strong> para las asignaturas seleccionadas.</p>
+                <button className="descargarButton" onClick={() => handleDescargar()}><i class="fa-solid fa-download"></i> Descargar exámenes dek último curso de todas las asignaturas</button>
             </div>
             <div className="volverDeposito">
                 <button className="volverDepositoButton" onClick={handleVolverDeposito}><i class="fa-solid fa-arrow-left"></i> Depósito de exámenes</button>
