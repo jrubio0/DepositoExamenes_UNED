@@ -226,7 +226,7 @@ const Examenes = () => {
                             <button className="descargarButton" onClick={() => handleDescargar(asignatura.idAsignatura)}><i class="fa-solid fa-download"></i> Descargar último año de {asignatura.nombreAsignatura}</button>
                         </div>
                         :
-                        <p>En este momento no disponemos de exámenes/soluciones para esta asignatura.</p>}
+                        <p className="sinExamenes">En este momento no disponemos de exámenes/soluciones para esta asignatura.</p>}
 
                 </div>
             ))}

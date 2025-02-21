@@ -12,7 +12,6 @@ const Header = ({ breadcrumbs }) => {
             <img src={logo} className="logo" alt="Logo UNED Calatayud" />
           </Link>
         </div>
-
         <p>EXÁMENES</p>
       </div>
       <div className="greenHeader">

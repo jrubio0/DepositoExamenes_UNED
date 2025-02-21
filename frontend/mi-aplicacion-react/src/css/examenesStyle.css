@@ -52,7 +52,7 @@ table {
 .totalExamenes {
     border: 1px solid #b8b8b8;
     background-color:#eeeeee;
-    padding: 0.3rem;
+    padding: 1rem;
 }
 
 .totalExamenes p {
@@ -87,4 +87,10 @@ table {
 
 .descargarButton:hover {
     background-color: #03664f;
+}
+
+.sinExamenes {
+    background-color: #eeeeee;
+    border: 1px solid #b8b8b8;
+    padding: 1rem;
 }
