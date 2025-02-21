@@ -28,7 +28,7 @@ const Asignaturas = () => {
 
     getCarreraNameById(idCarrera)
       .then(response => {
-        setCarrera(response.data);
+        setCarrera(response);
       })
   }, []);
 

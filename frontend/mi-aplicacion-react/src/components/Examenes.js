@@ -76,6 +76,10 @@ const Examenes = () => {
         return contador;
     }
 
+    const hasAnyExamen = (idAsignatura) => {
+        return cursos[idAsignatura]?.some(curso => curso.examenes.length > 0);
+    }
+
     const getLastCursoAcademico = (idAsignatura) => {
         let lastCursoAcademico = 0;
 
@@ -89,8 +93,8 @@ const Examenes = () => {
     }
 
     const fillPdfs = (idAsignatura) => {
+
         const pdfs = [];
-        
 
         if (idAsignatura) {
             const lastCursoAcademico = getLastCursoAcademico(idAsignatura);
@@ -153,75 +157,82 @@ const Examenes = () => {
             {asignaturas.map((asignatura, index) => (
                 <div>
                     <h1>{asignatura.nombreAsignatura} <span className="asignaturaId">{asignatura.idAsignatura}</span></h1>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th colSpan="4">Febrero</th>
-                                <th colSpan="4">Junio</th>
-                                <th colSpan="4">Septiembre</th>
-                            </tr>
-                            <tr>
-                                <th>Curso</th>
-                                <th>1ª Sem.</th>
-                                <th>2ª Sem.</th>
-                                <th>Orig.</th>
-                                <th>Res.</th>
-                                <th>1ª Sem.</th>
-                                <th>2ª Sem.</th>
-                                <th>Orig.</th>
-                                <th>Res.</th>
-                                <th>1º Parc.</th>
-                                <th>2º Parc.</th>
-                                <th>Orig.</th>
-                                <th>Res.</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {cursos[asignatura.idAsignatura]?.map((curso) => (
-                                <>
+
+                    {hasAnyExamen(asignatura.idAsignatura) ?
+                        <div>
+                            <table>
+                                <thead>
                                     <tr>
-                                        <td className="cellYear"><div className="cellContent"><small>{getYears(curso.num)}</small></div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "F1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "F2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "FO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "FR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "J1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "J2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "JO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "JR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "S1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "S2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "SO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "SR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                        <th></th>
+                                        <th colSpan="4">Febrero</th>
+                                        <th colSpan="4">Junio</th>
+                                        <th colSpan="4">Septiembre</th>
                                     </tr>
-                                    {hayRespuestas(curso) && (
-                                        <tr>
-                                            <td className="cellYear"><div className="cellContent"><small>Soluciones</small></div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "F1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "F2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "FO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "FR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "J1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "J2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "JO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "JR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "S1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "S2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "SO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                            <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "SR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
-                                        </tr>
-                                    )}
-                                </>
-                            ))}
-                        </tbody>
-                    </table>
-                    <button className="descargarButton" onClick={() => handleDescargar(asignatura.idAsignatura)}><i class="fa-solid fa-download"></i> Descargar exámenes del último curso</button>
+                                    <tr>
+                                        <th>Curso</th>
+                                        <th>1ª Sem.</th>
+                                        <th>2ª Sem.</th>
+                                        <th>Orig.</th>
+                                        <th>Res.</th>
+                                        <th>1ª Sem.</th>
+                                        <th>2ª Sem.</th>
+                                        <th>Orig.</th>
+                                        <th>Res.</th>
+                                        <th>1º Parc.</th>
+                                        <th>2º Parc.</th>
+                                        <th>Orig.</th>
+                                        <th>Res.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {cursos[asignatura.idAsignatura]?.map((curso) => (
+                                        <>
+                                            <tr>
+                                                <td className="cellYear"><div className="cellContent"><small>{getYears(curso.num)}</small></div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "F1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "F2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "FO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "FR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "J1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "J2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "JO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "JR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "S1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "S2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "SO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                <td><div className="cellContent">{getExamenesPorConvocatoria(curso, "SR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                            </tr>
+                                            {hayRespuestas(curso) && (
+                                                <tr>
+                                                    <td className="cellYear"><div className="cellContent"><small>Soluciones</small></div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "F1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "F2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "FO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "FR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "J1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "J2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "JO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "JR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "S1").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "S2").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "SO").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                    <td><div className="cellContent">{getRespuestasPorConvocatoria(curso, "SR").map(examen => <a href={getRutaExamen(examen)} target="_blank"><img src={getRutaIcono(examen)} /></a>)}</div></td>
+                                                </tr>
+                                            )}
+                                        </>
+                                    ))}
+                                </tbody>
+                            </table>
+                            <button className="descargarButton" onClick={() => handleDescargar(asignatura.idAsignatura)}><i class="fa-solid fa-download"></i> Descargar último año de {asignatura.nombreAsignatura}</button>
+                        </div>
+                        :
+                        <p>En este momento no disponemos de exámenes/soluciones para esta asignatura.</p>}
+
                 </div>
             ))}
             <div className="totalExamenes">
                 <p>Dispone de un total de <strong>{cuentaExamenes(false)} exámenes y {cuentaExamenes(true)} soluciones</strong> para las asignaturas seleccionadas.</p>
-                <button className="descargarButton" onClick={() => handleDescargar()}><i class="fa-solid fa-download"></i> Descargar exámenes dek último curso de todas las asignaturas</button>
+                <button className="descargarButton" onClick={() => handleDescargar()}><i class="fa-solid fa-download"></i> Descargar últimos años</button>
             </div>
             <div className="volverDeposito">
                 <button className="volverDepositoButton" onClick={handleVolverDeposito}><i class="fa-solid fa-arrow-left"></i> Depósito de exámenes</button>

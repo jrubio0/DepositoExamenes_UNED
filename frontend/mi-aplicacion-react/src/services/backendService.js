@@ -39,6 +39,7 @@ export const getAsignaturasPorCarrera = async (idCarrera) => {
 export const getCarreraNameById = async (idCarrera) => {
     try {
         const response = await axios.get(`${BASE_URL}/carreras/carreraNameById/` + idCarrera);
+        console.log("Desde el service: " + response.data)
         return response.data;
     } catch (error) {
         console.error("Error obteniendo carreraNameById:", error);
