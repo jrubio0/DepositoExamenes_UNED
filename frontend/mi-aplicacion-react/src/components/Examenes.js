@@ -223,7 +223,7 @@ const Examenes = () => {
                                     ))}
                                 </tbody>
                             </table>
-                            <button className="descargarButton" onClick={() => handleDescargar(asignatura.idAsignatura)}><i class="fa-solid fa-download"></i> Descargar último año de {asignatura.nombreAsignatura}</button>
+                            <button className="descargarButton" onClick={() => handleDescargar(asignatura.idAsignatura)}><i class="fa-solid fa-download"></i> Descargar exámenes del último año</button>
                         </div>
                         :
                         <p className="sinExamenes">En este momento no disponemos de exámenes/soluciones para esta asignatura.</p>}

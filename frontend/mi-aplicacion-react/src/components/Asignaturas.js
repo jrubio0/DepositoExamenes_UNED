@@ -10,6 +10,7 @@ const Asignaturas = () => {
   const { idCarrera } = useParams();
   const [asignaturas, setAsignaturas] = useState({});
   const [carrera, setCarrera] = useState('');
+  //En la web antigua si no es de los cuatro primeros cursos directamente no pone nada
   const nombresCursos = ["", "Primer curso", "Segundo curso", "Tercer curso", "Cuarto curso", "", "", ""];
   const [selectedAsignaturas, setSelectedAsignaturas] = useState([]);
 
@@ -30,7 +31,7 @@ const Asignaturas = () => {
       .then(response => {
         setCarrera(response);
       })
-  }, []);
+  }, []); //Agregar idCarrera dentro del array?
 
   const handleCheckboxChange = (event) => {
     const { id, value, checked } = event.target;
